@@ -20,3 +20,7 @@ $ kubectl get crds | grep 'istio.io\|certmanager.k8s.io' | wc -l
 53
 ```
 Select a configuration profile and then install the istio chart corresponding to your chosen profile. The default profile is recommended for production deployments:
+
+```
+helm install istio-helm/istio --name istio --namespace istio-system
+```
