@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: myapp
+  name: myapp.service.consul
 spec:
   host: myapp
   subsets:
