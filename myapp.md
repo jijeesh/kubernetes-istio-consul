@@ -4,6 +4,14 @@
 To represent two different versions of the applications, I have built simple Nginx-based Docker images – jijeesh/bluegreen:v1 and jijeesh/bluegreen:v2. When deployed, they show a static page with a blue or green background. We will use these images for the tutorial.
 Our goal is to drive the traffic selectively to one of the deployments with no downtime. To achieve this, we need to tell Istio to route the traffic based on the weights.
 
+Notice the labels used for identifying the pods – app and version. While the app name remains the same the version is different between the two deployments.
+
+This is expected by Istio to treat them as a single app but to differentiate them based on the version.
+
+Same is the case with the ClusterIP service definition. Due the label, app: myapp, it is associated with the pods from both the deployments based on different versions.
+
+Create the deployment and the service with kubectl. Note that these are simple Kubernetes objects with no knowledge of Istio. The only connection with Istio is the way we created the labels for the deployments and the service.
+
 There are three objects involved in making this happen:
 
 # Gateway
