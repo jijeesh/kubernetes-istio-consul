@@ -1,13 +1,17 @@
 # kubernetes-istio-consul
-
-Make sure you have a service account with the cluster-admin role defined for Tiller. If not already defined, create one using following command:
-```
-$ kubectl apply -f istio-helm/helm-service-account.yaml
-```
 Install Tiller on your cluster with the service account:
 ```
 $ helm init --service-account tiller
 ```
+install consul
+```
+helm install --namespace consul --name consul ./consul-helm
+```
+Make sure you have a service account with the cluster-admin role defined for Tiller. If not already defined, create one using following command:
+```
+$ kubectl apply -f istio-helm/helm-service-account.yaml
+```
+
 Install the istio-init chart to bootstrap all the Istio’s CRDs:
 ```
 $ helm install istio-helm/istio-init --name istio-init --namespace istio-system
