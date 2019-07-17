@@ -28,3 +28,8 @@ Select a configuration profile and then install the istio chart corresponding to
 ```
 helm install istio-helm/istio --name istio --namespace istio-system
 ```
+```
+kubectl label namespace default istio-injection=enabled
+kubectl get namespace -L istio-injection
+
+```
